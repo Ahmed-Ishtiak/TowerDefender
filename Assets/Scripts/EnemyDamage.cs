@@ -29,6 +29,6 @@ public class EnemyDamage : MonoBehaviour
 
     void ProcessHit()
     {
-        hitPoints = hitPoints - 1;
+        hitPoints = hitPoints - 2;
     }
 }

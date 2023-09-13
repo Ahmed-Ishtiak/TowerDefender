@@ -25,7 +25,7 @@ public class PathFinder : MonoBehaviour
 		if(path.Count == 0)
 		{
             LoadBlocks();
-            ColorStartEndPoint();
+            //ColorStartEndPoint();
             BreadthFirstSearch();
             CreatePath();
         }
@@ -93,13 +93,13 @@ public class PathFinder : MonoBehaviour
 			neighbour.exploreFrom = seachCenter;
 		}
 	}
-
+    /*
 	private void ColorStartEndPoint()
 	{
 		startWaypoint.SetTopColor(Color.white);
 		endWaypoint.SetTopColor(Color.red);
 	}
-
+	*/
 	private void LoadBlocks()
 	{
 		var waypoints = FindObjectsOfType<Waypoint>();

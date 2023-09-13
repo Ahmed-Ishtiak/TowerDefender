@@ -23,9 +23,18 @@ public class Waypoint : MonoBehaviour
 
 		);
 	}
+
+    private void OnMouseOver()
+    {
+		print(gameObject.name);
+    }
+
+
+    /*
 	public void SetTopColor(Color color)
 	{
 		MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
 		topMeshRenderer.material.color = color;
 	}
+	*/
 }
