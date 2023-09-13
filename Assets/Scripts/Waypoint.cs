@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Waypoint : MonoBehaviour
 {
+	[SerializeField] Tower towerPrefab;
 	public bool isExplored = false;
 	public Waypoint exploreFrom;
+	public bool isPlaceable = true;
+
 	Vector2Int gridPos;
 	const int gridSize = 10;
 	
@@ -26,8 +29,23 @@ public class Waypoint : MonoBehaviour
 
     private void OnMouseOver()
     {
-		print(gameObject.name);
+		var clicked = Input.GetMouseButtonDown(0);
+		if(clicked) 
+		{
+			if(isPlaceable)
+			{
+				Instantiate(towerPrefab, transform.position, Quaternion.identity);
+				isPlaceable = false;
+            }
+			else
+			{
+                print("Can not place");
+            }
+            
+        }
+		
     }
+	
 
 
     /*

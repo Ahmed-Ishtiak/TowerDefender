@@ -33,20 +33,27 @@ public class PathFinder : MonoBehaviour
 		return path;
 	}
 	private void CreatePath()
-	{
-		path.Add(endWaypoint);
-		Waypoint previous = endWaypoint.exploreFrom;
-		while(previous != startWaypoint)
-		{
-			path.Add(previous);
-			previous = previous.exploreFrom;
-		}
-		path.Add(startWaypoint);
-		path.Reverse();
-		
-	}
+    {
+        SetAsPath(endWaypoint);
 
-	private void BreadthFirstSearch()
+        Waypoint previous = endWaypoint.exploreFrom;
+        while (previous != startWaypoint)
+        {
+            SetAsPath(previous);
+            previous = previous.exploreFrom;
+        }
+		SetAsPath(startWaypoint);
+        path.Reverse();
+
+    }
+
+    private void SetAsPath(Waypoint waypoint)
+    {
+        path.Add(waypoint);
+        waypoint.isPlaceable = false;
+    }
+
+    private void BreadthFirstSearch()
 	{	
 		queue.Enqueue(startWaypoint);
 		while (queue.Count > 0 && isRunning)
