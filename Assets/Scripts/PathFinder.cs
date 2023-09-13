@@ -22,10 +22,14 @@ public class PathFinder : MonoBehaviour
 
 	public List<Waypoint> GetPath()
 	{
-		LoadBlocks();
-		ColorStartEndPoint();
-		BreadthFirstSearch();
-		CreatePath();
+		if(path.Count == 0)
+		{
+            LoadBlocks();
+            ColorStartEndPoint();
+            BreadthFirstSearch();
+            CreatePath();
+        }
+		
 		return path;
 	}
 	private void CreatePath()
@@ -52,7 +56,7 @@ public class PathFinder : MonoBehaviour
 			ExploreNeighbour();
 			seachCenter.isExplored = true;
 		}
-		print("Finished path finding?");
+		
 	}
 
 	private void HaltIfEndFound()
